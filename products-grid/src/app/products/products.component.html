@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <button type="button" class="btn btn-primary" (click)="sortBy('id')">Sort by id</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary" (click)="sortBy('size')">Sort by size</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" (click)="sortBy('price')">Sort by price</button>
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container-fluid withoverflow" (scroll)='checkthis($event)'>
+    <table class="table table-hover">
+        <thead class="table-dark">  
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">SIZE</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">FACE</th>
+                <th scope="col">DATE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.id}}</td>
+                <td>{{product.size}}</td>
+                <td>{{product.price | currency}}</td>
+                <td>{{product.face}}</td>
+                <td>{{checkDate(product.date)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 *ngIf="atBottom"> End of catalogue</h2>
+<h2 *ngIf="loading"> Loading ...</h2>
